@@ -5,6 +5,7 @@ create table xx_cc_2022.xx_gotv_sl_goals_2022 as select * from (
 SELECT
 date(2022,10,7) as reporting_week
 , state_code
+, county_name
 ,region_name
 ,staging_location_name
 , door_shifts_scheduled
@@ -135,7 +136,7 @@ FROM `demsdscc.xx_cc_2022.xx_oct7_fo_goals_raw`
 where region_name not in ('Region')
 
 
-union all
+union all.  
 
 SELECT
 date(2022,10,14) as reporting_week,
