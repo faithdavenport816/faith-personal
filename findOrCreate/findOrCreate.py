@@ -151,7 +151,7 @@ def write_results_to_bq(responses_df, project_id, destination):
 
 
 def main(bq_table, state_code, project_id, destination_table):
-    df = get_bq_data(bq_table, state_code)
+    df = get_bq_data(bq_table)
     responses = []
     for index, row in df.iterrows():
         print(index)
