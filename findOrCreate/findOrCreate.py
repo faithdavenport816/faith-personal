@@ -8,8 +8,8 @@ from google.cloud import bigquery
 # CONFIGURABLE VARIABLE ASSIGNMENT
 
 API_USER = "2026CoordinatedActionPlatformAPIemails"
+state_code = os.getenv("STATE_CODE")
 API_KEY_ENV_VAR_PREFIX = "VAN_{state_code}_TOKEN"
-STATE_CODE = "NH"  # state to process
 BQ_PROJECT_ID = "demsdscc"
 BQ_SOURCE_TABLE = "commons.findOrCreatetestdata"
 BQ_RESULTS_TABLE = "commons.findOrCreatetestdata_results"
@@ -22,7 +22,7 @@ INITIAL_WAIT = 2.0  # seconds, doubles on each retry
 
 
 # --- Functions ---
-def get_bq_data(table, state_code):
+def get_bq_data(table):
     """
     Query a BigQuery table
     """
@@ -167,7 +167,7 @@ def main(bq_table, state_code, project_id, destination_table):
 if __name__ == "__main__":
     main(
         bq_table=BQ_SOURCE_TABLE,
-        state_code=STATE_CODE,
+        state_code={state_code},
         project_id=BQ_PROJECT_ID,
         destination_table=BQ_RESULTS_TABLE,
     )
