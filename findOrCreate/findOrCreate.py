@@ -10,7 +10,7 @@ from google.cloud import bigquery
 API_USER = "2026CoordinatedActionPlatformAPIemails"
 state_code = os.getenv("STATE_CODE")
 print(state_code)
-API_KEY_ENV_VAR_PREFIX = "VAN_{state_code}_TOKEN"
+API_KEY_ENV_VAR = f"VAN_{state_code}_TOKEN"
 BQ_PROJECT_ID = "demsdscc"
 BQ_SOURCE_TABLE = "commons.findOrCreatetestdata"
 BQ_RESULTS_TABLE = "commons.findOrCreatetestdata_results"
@@ -92,7 +92,7 @@ def get_auth(state_code):
     Mode is 'myc' (MyCampaign) so we add the "|1" suffix to the API key.
     """
     api_user = API_USER
-    api_key = os.getenv(API_KEY_ENV_VAR_PREFIX.format(state_code=state_code)) + "|1"
+    api_key = os.getenv() + "|1"
     if api_user is None or api_key is None:
         raise ValueError(f"API credentials not found for state {state_code}")
     encoded = base64.b64encode(f"{api_user}:{api_key}".encode()).decode()
