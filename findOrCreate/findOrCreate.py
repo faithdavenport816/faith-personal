@@ -92,7 +92,7 @@ def get_auth(state_code):
     Mode is 'myc' (MyCampaign) so we add the "|1" suffix to the API key.
     """
     api_user = API_USER
-    api_key = os.getenv() + "|1"
+    api_key = os.getenv(API_KEY_ENV_VAR) + "|1"
     if api_user is None or api_key is None:
         raise ValueError(f"API credentials not found for state {state_code}")
     encoded = base64.b64encode(f"{api_user}:{api_key}".encode()).decode()
