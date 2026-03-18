@@ -9,6 +9,7 @@ from google.cloud import bigquery
 
 API_USER = "2026CoordinatedActionPlatformAPIemails"
 state_code = os.getenv("STATE_CODE")
+print(state_code)
 API_KEY_ENV_VAR_PREFIX = "VAN_{state_code}_TOKEN"
 BQ_PROJECT_ID = "demsdscc"
 BQ_SOURCE_TABLE = "commons.findOrCreatetestdata"
